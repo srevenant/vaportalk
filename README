@@ -1,0 +1,61 @@
+Installation
+------------
+
+VT should compile on SunOS, HP-UX, or a BSD-based system without
+changes.  You can tweak the performance by going through config.h and
+commenting or uncommenting #defines for library functions you have.
+If you are uncertain about ANSI_CTYPES, compile and run test.c (cc
+test.c;a.out).  It's probably also worthwhile to replcae the random
+number generator, since rand() is, although standard, not very good.
+If you do use standard Unix rand(), the following VTC function
+produces acceptable results:
+	func rand(n) { return (n < 256) ? (rnd >> 7) % n : rnd % n; }
+
+To compile with hardcoded VT-102 terminal sequences instead of using
+the termcap library, replace -DTERMCAP with -DHARDCODE on the CFLAGS
+line of the makefile, and remove -ltermcap from the LIBS line.
+
+After you compile, you should probably strip the executable ('strip
+vt').
+
+On an AIX system, compile with -DAIX.  You will need to compile 
+with -D_BSD and link with -lbsd, or use bsdcc.	If you don't want 
+to compile with -DHARDCODE, you will need to set up a termcap 
+file.  This involves finding someone with an /etc/termcap file on a 
+BSD system, extracting the entry for your terminal type, placing it 
+in your home directory, and setting:
+	setenv TERMCAP ~/termcap
+	setenv TERM vt100
+These should be changed depending on where you put the termcap file
+and what your terminal type is.	 You can also include several entries
+in the termcap file and set TERM to the type of the terminal you are
+currently using, if you use multiple terminals.
+
+With BSD 4.3 Reno, compile with -DUSE_OLD_TTY.
+
+On a SysV system with BSD socket libraries, compile with -DSYSV and 
+link with the socket libraries if necessary.
+
+
+Files
+-----
+
+(This text is also in ../README.)
+
+You do not need to keep any of the files in src except for the vt 
+executable.  The executable can be placed wherever is convenient 
+(e.g. ~/bin, /usr/local/bin).
+
+For a personal installation, you should leave the distribution files
+in ~/vt/dist and ~/vt/extra, as they are now if you untarred the
+archive in ~.  You can also place them in ~ or ~/vt and VT will find
+them.
+
+For a system installation, you should put the files currently in the
+dist directory into /usr/local/lib/vt, and the files currently in the
+extra directory into /usr/local/lib/vt/extra.  If this is not
+possible, edit the search path in main.c (in the src directory) to
+include the directory where you plan to place the dist files, and the
+search path in main.vtc (in the dist directory) to include the
+directory where you plan to place the extra files.
+
