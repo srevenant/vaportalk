@@ -1,0 +1,16 @@
+Source: vaportalk
+Section: unknown
+Priority: optional
+Maintainer: Richard Tibbetts <tibbetts@mit.edu>
+Build-Depends: debhelper (>> 3.0.0)
+Standards-Version: 3.5.2
+
+Package: vaportalk
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Customizable interactive pager (aka vt).
+ Vaportalk (vt) can be a mudd client, a zephyr client, or a number of
+ other things once properly customized. It breaks the terminal up into
+ a number of scrolling windows, a status bar and a windows for
+ entering commands. Without configuration files, however, it is not
+ very useful.

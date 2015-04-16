@@ -185,6 +185,7 @@ fdecl	: FUNC unreserved adecl		{ curfunc = $2;
 
 adecl	: '(' optargs ')'
 	| '(' params { reqargs = avarc; } optargs ')'
+	;
 
 tdecl	: /* nothing */
 	| '[' ']'

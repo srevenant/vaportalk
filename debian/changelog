@@ -1,0 +1,9 @@
+vaportalk (0.0.20011221-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Richard Tibbetts <tibbetts@mit.edu>  Fri, 21 Dec 2001 11:03:58 -0500
+
+Local variables:
+mode: debian-changelog
+End:
