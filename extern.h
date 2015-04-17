@@ -82,7 +82,7 @@ void bounds_error(Dframe *);
 /* remote.c */
 void init_rmt(void);
 Unode *new_rmt(char *, int);
-Unode *new_rmt_shell(char *, int);
+Unode *new_rmt_shell(char *);
 void disconnect(Unode *);
 int io_check(long, long);
 int transmit(Unode *, Cstr);
@@ -201,7 +201,11 @@ void update_echo_mode(void);
 void change_prompt(char *, int);
 void output(Unode *, char *);
 void coutput(Cstr);
+#ifdef USE_STDARG
+void outputf(char *, ...);
+#else
 void outputf(); /* Prototype doesn't work with varargs */
+#endif
 void operror(char *, Unode *);
 
 /* vtc.y */
