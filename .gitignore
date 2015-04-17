@@ -1,3 +1,11 @@
+build-stamp
+configure-stamp
+debian/files
+debian/vaportalk.debhelper.log
+debian/vaportalk.substvars
+debian/vaportalk/
+vt
+
 # Object files
 *.o
 *.ko
